@@ -1,0 +1,94 @@
+<!-- myapp/templates/myapp/success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Successful</title>
+    <style>
+        h1 {
+            color: red; /* Default color (light blue) */
+            transition: color 1s ease; /* Add a smooth transition effect */
+          }
+          
+          h1:hover {
+            color: black; /* Adorable color (pink) on hover */
+          }
+          
+        li {
+            color:sky blue;
+            text-align:left;
+            justify-content:center;
+            border:1px solid black;
+            margin-left:10px;
+            padding-left:10px;
+            bgcolor:brown;
+            margin-bottom:10px;
+
+        }
+        li {
+            background-color: #7fffd4; /* Desirable color (this is a light green color) */
+            padding: 10px; /* Optional: Add some padding to make it visually appealing */
+          }
+
+        li:hover {
+            color:white;
+          }
+
+          li {
+            background-color: #7fffd4; /* Default color (light green) */
+            padding: 10px;
+            transition: background-color 0.3s ease; /* Add a smooth transition effect */
+          }
+          
+          li:hover {
+            background-color: #ff69b4; /* Adorable color (pink) on hover */
+          }
+          
+
+          h1 {
+            position: relative;
+            animation: moveLeftToRight 5s linear infinite;
+          }
+          
+          @keyframes moveLeftToRight {
+            0% {
+              left: 0;
+            }
+            100% {
+              left: calc(100% - 100px); /* Adjust the width of your element */
+            }
+          }
+        </style>
+</head>
+<body bgcolor="Sky Blue">
+
+    <h1 color="Blue">Form Submission Successful</h1>
+    
+    <ol>
+    {% for data in form_data %}
+    
+       <li> 
+       <p>Name: {{ data.name }}</p>
+       <p>Surname: {{ data.surname }}</p>
+       <p>Email: {{ data.email }}</p>
+       <p>Phone: {{ data.phone }}</p>
+  
+       <a href="{% url 'delete_contact' data.id %}"><button>Delete Contact</button></a>
+
+      
+  
+    
+    </form>
+       </li>
+    
+    {%endfor%}
+
+    </ol>
+    
+
+
+
+
+</body>
+</html>

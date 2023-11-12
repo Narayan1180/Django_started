@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hi EveryOne I am going to Start my First Django Project </h1>
+  <h2>Names:</h2>
+    <ul>
+        {% for name in names %}
+        <li>
+            {% if name == "Alice" %}
+                Welcome, {{ name }}!
+            {% else %}
+                Hello, {{ name }}!
+            {% endif %}
+        </li>
+             
+        {% endfor %}
+    </ul>
+</body>
+</html>

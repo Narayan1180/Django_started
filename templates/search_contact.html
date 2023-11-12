@@ -1,0 +1,21 @@
+<!-- search_contact.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Contact</title>
+</head>
+<body>
+
+<h2>Search Contact</h2>
+
+<form method="post" action="search_contact">
+    {% csrf_token %}
+    <label for="search_query">Search Query:</label>
+    <input type="text" id="search_query" name="search_query" required>
+    <button type="submit">Search</button>
+</form>
+
+
+
+</body>
+</html>
