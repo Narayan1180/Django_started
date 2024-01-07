@@ -91,16 +91,15 @@ WSGI_APPLICATION = 'mydjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'narayan',
-        'USER':'postgres',
-        'PASSWORD':'12345',
-        'HOST':'localhost'
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
+
 
 
 # Password validation
