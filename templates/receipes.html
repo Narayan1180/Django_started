@@ -114,7 +114,7 @@
     
             <td>{{ recipe.recipe_name }}</td>
             <td>{{ recipe.recipe_description }}</td>
-            <td><img src={{ recipe.recipe_image }} height="300px" width="300px"></td>
+            <td><img src={{ recipe.recipe_image.url }} height="300px" width="300px"></td>
             
         </tr>
         {% endfor %}
