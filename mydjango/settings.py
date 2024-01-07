@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 SITE_ID=1
 # Application definition
+PORT = int(os.environ.get('PORT', 8000))
 AUTHENTICATION_BACKENDS = [
     # ...
     'allauth.account.auth_backends.ModelBackend',
