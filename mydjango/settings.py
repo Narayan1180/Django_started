@@ -145,7 +145,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # settings.py
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 #added manually
