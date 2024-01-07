@@ -189,6 +189,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# settings.py
+
+
     
 
 
@@ -227,7 +230,11 @@ SOCIALACCOUNT_PROVIDERS = {
 # settings.py
 
 
+# settings.py
 
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 LOGIN_REDIRECT_URL='receipes'
