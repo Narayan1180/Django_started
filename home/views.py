@@ -1,11 +1,15 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from .models import FormData
 from django.db import models
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login,logout
+# Create your views here.
 
+@login_required(login_url="/login")
 # Create your views here.
 
 
-contact_list=[]
+
 def index(request):
     data=FormData.objects.all()
     return render(request,"success.html",{'form_data':data})
@@ -21,6 +25,11 @@ def services(request):
 
 def contact(request):
     return render(request,"contact.html")
+
+
+def School(request):
+
+    return render(request,'aryan.html')
 
 def Searchcontact(request):
     return render(request,"search_contact.html")
@@ -73,6 +82,7 @@ def search_contact(request):
 
     
     return render(request, 'search_contact.html')
+
 
 
 

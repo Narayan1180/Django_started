@@ -26,18 +26,32 @@ SECRET_KEY = 'django-insecure-hx-e$7jm!n3m+@=2gb#gc5-r++bss#pvi^(se3qmb1c6i2b-i-
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+#ALLOWED_HOSTS = ['example.com', 'localhost:8000', '127.0.0.1','localhost']
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+SITE_ID=1
 # Application definition
-
+AUTHENTICATION_BACKENDS = [
+    # ...
+    'allauth.account.auth_backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'vegie.apps.VegieConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+      'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'mydjango.urls'
@@ -63,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -132,3 +149,76 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+SOCIALACCOUNT_PROVIDERS = {
+     
+    'github': {
+       'APP': {
+           'client_id': 'fc294584160bd68bffc4',
+            'secret': 'c10fad6293e935d907a9d77f71e1b5201fb5ad53',
+           'key': '',
+        }
+    
+    
+     },
+
+     'google': {
+        'APP': {
+            'client_id': '756753365871-30uhsqcsss829b8vsdbuj4h2ct52mt3v.apps.googleusercontent.com',
+            'secret':'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',
+            'key': '',
+        }
+}
+,
+'facebook': {
+        
+        'APP': {
+            'client_id': '3585262148395989',
+            'secret': '1015e7883bc267e579b8d7091ccd874b',
+        },
+    }
+}
+
+    
+
+
+"""
+SOCIALACCOUNT_PROVIDERS = {
+   'google': {
+        'APP': {
+            'client_id': '756753365871-30uhsqcsss829b8vsdbuj4h2ct52mt3v.apps.googleusercontent.com',
+            'secret':'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',
+            'key': '',
+        }
+    'github': {
+       'APP': {
+           'client_id': ' b0023a425d4a56e7fbd7',
+            'secret': '27dec034bb06837e4e742d392d4ecd56a1af8e34',
+           'key': '',
+        }
+        
+    }
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        #'OAUTH_PKCE_ENABLED': True,
+    },
+  }
+
+
+  """
+
+
+
+
+LOGIN_REDIRECT_URL='receipes'
+#SOCIALACCOUNT_ADAPTER = 'your_project.your_app.adapters.CustomSocialAccountAdapter'
+
+

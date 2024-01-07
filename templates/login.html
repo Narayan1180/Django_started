@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+
+
+
+  <style>
+
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: brown;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    
+
+   #customers td {
+      color: pink;
+    }
+    
+   #recipe{
+    justify-content:center;
+    text-align:center;
+    
+   }
+   /* Add this to your CSS file or in a <style> tag in your HTML */
+
+    .social-login-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .github-login-button, .google-login-button, .facebook-login-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        color: blue;
+        background-color: pink;
+        border-radius: 5px;
+    }
+    
+     .facebook-login-button:hover {
+        background-color:blue;
+        border-top:1px solid black;
+        border-bottom:1px solid black;
+        color:white;
+        
+
+    }
+    .google-login-button:hover{
+      background-color:red;
+      border-top:1px solid black;
+      border-bottom:1px solid black;
+      color:white;
+      
+
+    }
+  .github-login-button:hover
+   { background-color:Black;
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+    color:white;
+   }
+    
+    
+</style>
+</head>
+<body>
+  
+    <div clas ="container mt-5">
+ 
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+        
+          {% csrf_token %}
+    
+            <h2>Login</h2>
+            <hr>
+            {% if messages %}
+            {{message.tags}}
+
+            <div class="alert alert-primary" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Username</label>
+                  <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+                </div>
+                <p>Don,t have account <a href="/register">Register</a></p>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+              
+           </div>
+           <p>
+            {% load socialaccount %}
+            Login with social account:
+            
+           
+            <div class="social-login-buttons">
+              <a href="{% provider_login_url 'github' %}" class="github-login-button">GitHub</a>
+              <a href="{% provider_login_url 'google' %}" class="google-login-button">Google</a>
+              <a href="{% provider_login_url 'facebook' %}" class="facebook-login-button">Facebook</a>
+          </div>
+          
+            
+            <!-- Add links for other providers if configured -->
+          </p>
+
+      </form>
+
+    </div>
+    
+      
+  
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+
+
+  <style>
+
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: brown;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    
+
+   #customers td {
+      color: pink;
+    }
+    
+   #recipe{
+    justify-content:center;
+    text-align:center;
+    
+   }
+    
+</style>
+</head>
+<body>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <a href="/logout" type="submit" class="btn btn-success">Logout <span>{{user.first_name}}</span> </a>
+      </form>
+    </div>
+  </nav>
+  
+  <div clas ="container mt-5">
+ 
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+    
+      {% csrf_token %}
+
+        <h2>Add Recipes</h2>
+    <hr>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Receipe name</label>
+      <input name="receipe_name" type="text" class="form-control" required >
+     
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" name="receipe_description"class="form-label">Recipe description</label>
+      <textarea class="form-control"  name="receipe_description"required></textarea>
+    </div>
+
+    <div class="mb-3">
+      
+      <label class="form-check-label" for="exampleCheck1">Receipe Image</label>
+      <input type="file" name="receipe_image" class="form-control"
+    </div>
+    <button type="submit" class="btn btn-success">Add Recipes</button>
+  </form>
+
+</div>   
+</div>
+</div>
+
+<!-- recipe_search.html -->
+<form method="get" action="{% url 'recipe_search' %}">
+  <input type="text" class="form-control" name="query" placeholder="Enter search query">
+  <button type="submit" class="btn btn-outline-secondary">Search</button>
+</form>
+
+
+{% if query %}
+{% if results %}
+<h3>Search Results for "{{ query }}"</h3>
+    <div class="row">
+
+      <table id="customers" bgcolor='light pink' >
+        <tr>
+            <th>Name</th>
+            <th>description</th>
+            <th>Image</th>
+            <th>Edit</th>
+        </tr>
+    
+        {% for recipe in results %}
+        <tr>
+    
+            <td>{{ recipe.recipe_name }}</td>
+            <td>{{ recipe.recipe_description }}</td>
+            <td><img src={{ recipe.recipe_image }} height="300px" width="300px"></td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+       
+            
+
+    </div>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+{% endif %}
+
+
+
+<h2 id="recipe">My Recipes </h2>
+{% if items %}
+<table id="customers" bgcolor='light pink' >
+    <tr>
+        <th>Name</th>
+        <th>description</th>
+        <th>Image</th>
+        <th>Edit</th>
+    </tr>
+
+    {% for recipe in items %}
+    <tr>
+
+        <td>{{ recipe.recipe_name }}</td>
+        <td>{{ recipe.recipe_description }}</td>
+        <td><img src={{ recipe.recipe_image }} height="100px" width="100px"></td>
+  
+        <td><a  href="{% url 'delete_recipe' recipe.id %}"><button style="color:red"><img src= >delete recipe</button></a><br>
+            <a  href="{% url 'update_recipe' recipe.id %}"><button style="color:red">update recipe</button></a></td>
+    </tr>
+    {% endfor %}
+    
+</table>
+{% endif %}
+
+</body>
+</html>

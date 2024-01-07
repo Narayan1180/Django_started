@@ -23,9 +23,10 @@ urlpatterns = [
     path('about', views.about,name='about'),
     path('services', views.services,name='services'),
     path('contact', views.contact,name='contact'),
-    path('submit_form', views.submit_form,name='success'),
+    path('submit_form', views.submit_form,name='submit_form'),
     path('search_contact', views.search_contact,name='search_contact'),
     path('searchcontact', views.Searchcontact,name='searchcontact'),
     path('delete_contact/<int:contact_id>/', views.delete_contact, name='delete_contact'),
+    path('aps',views.School,name='aps'),
 
 ]

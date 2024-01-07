@@ -18,6 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
+   
+     path('',include('vegie.urls')),
+    path('',include('home.urls')),
+    path('accounts/', include('allauth.urls'),name="Login"),
+     path('accounts/', include('allauth.socialaccount.urls')),
     path('admin/', admin.site.urls),
-    path('',include('home.urls'))
+   
+     
 ]

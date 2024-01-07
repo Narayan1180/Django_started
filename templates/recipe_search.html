@@ -1,0 +1,49 @@
+<!-- recipe_search.html -->
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+
+    table,tr,td{
+        border:1px solid black;
+    }
+</style>
+    </head>
+
+<body >
+    <a  class="btn btn-outline-dark" href="{% url 'receipes' %}">&#x2190; back_to_home</a><br><hr>
+    {% if results %}
+    <h3>Search Results for "{{ query }}"</h3>
+        <div>
+    
+          <table >
+            <tr>
+                <th>Name</th>
+                <th>description</th>
+                <th>Image</th>
+                
+            </tr>
+        
+            {% for recipe in results %}
+            <tr>
+        
+                <td color:red>{{ recipe.recipe_name }}</td>
+                <td>{{ recipe.recipe_description }}</td>
+                <td><img src={{ recipe.recipe_image }} height="100px" width="100px"></td>
+                
+            </tr>
+            {% endfor %}
+            
+        </table>
+           
+                
+    
+        </div>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
+
+    

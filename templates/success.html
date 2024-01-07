@@ -59,12 +59,67 @@
               left: calc(100% - 100px); /* Adjust the width of your element */
             }
           }
+        
+            #customers {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            #customers td, #customers th {
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
+            
+            #customers tr:nth-child(){background-color: #f2f2f2;}
+            
+            #customers tr:hover {background-color: brown;}
+            
+            #customers th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #04AA6D;
+              color: white;
+            }
+
+           #customers td {
+              color: pink;
+            }
+            
+            
         </style>
 </head>
-<body bgcolor="Sky Blue">
+<body bgcolor="#20283e">
 
     <h1 color="Blue">Form Submission Successful</h1>
-    
+
+
+    <table id="customers" bgcolor='light pink'>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Change</th>
+      </tr>
+      
+       
+      {% for data in form_data %}
+       <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.surname}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.phone}}</td>
+        <td><a href="{% url 'delete_contact' data.id %}"><button>Delete Contact</button></a></td>
+       </tr>
+
+       {% endfor %}
+
+
+    </table>
+    <a href="{% url 'contact'  %}"><button>Add Contact</button></a>
+    <!--
     <ol>
     {% for data in form_data %}
     
@@ -84,7 +139,7 @@
     
     {%endfor%}
 
-    </ol>
+    </ol>  -->
     
 
 
